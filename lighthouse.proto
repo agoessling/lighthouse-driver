@@ -1,0 +1,108 @@
+package lighthouse;
+
+// This file defines the Protocol Buffer API
+// used to communicate with LightHouse.
+// More information about protocol buffers can be
+// found here: https://code.google.com/p/protobuf/
+// run "protoc --python_out=. lighthouse.proto" to 
+// create lighthouse_pb2.py used by lighthouse.py
+
+// Generic Command To Driver
+// This is the only thing that is sent to lighthouse.py
+message Command {
+    // List Of Commands
+    enum Commands {
+        CONNECT     = 1;
+        DISCONNECT  = 2;
+        HELLO       = 3;
+        EN_LED      = 4;
+        DIS_LED     = 5;
+        SET_DC      = 6;
+        SEND_DATA   = 7;
+        LAT_DATA    = 8;
+        NUM_BRDS    = 9;
+    }
+
+    // Decides command type
+    required Commands cmd_type = 1;
+
+    // Only one of these will be filled
+    optional Connect    connect     = 2;
+    optional Disconnect disconnect  = 3;
+    optional Hello      hello       = 4;
+    optional En_LED     en_led      = 5;
+    optional Dis_LED    dis_led     = 6;
+    optional Set_DC     set_dc      = 7;
+    optional Send_Data  send_data   = 8;
+    optional Lat_Data   lat_data    = 9;
+    optional Num_Brds   num_brds    = 10;
+}
+
+// Specific Commands To Driver
+// This is how more information is sent with commands.
+
+message Connect {
+    optional string port = 1;
+}
+
+message Disconnect {
+}
+
+message Hello {
+}
+
+message En_LED {
+}
+
+message Dis_LED {
+}
+
+message Set_DC {
+    required uint32 level = 1;
+    required uint32 num_brds = 2;
+}
+
+message Send_Data {
+    repeated uint32 data = 1 [packed=true];
+}
+
+message Lat_Data {
+}
+
+message Num_Brds {
+}
+
+// Generic Response From Driver
+// This is the only response from lighthouse.py
+message Response {
+    required Command.Commands cmd = 1;
+    optional Error error = 2;
+
+    optional Connect_Resp connect_resp = 3;
+    optional Num_Brds_Resp num_brds_resp = 4;
+}
+
+// Response Errors
+message Error {
+    // List Of Errors
+    enum Errors {
+        NO_BRD      = 1;
+        NO_PORT     = 2;
+        TEMP        = 3;
+        LOD         = 4;
+        UNKWN_CMD   = 5;
+        UNFMD_CMD   = 6;
+    }
+
+    required Errors error_type = 1;
+    optional string string = 2;
+}
+
+// Specific Responses
+message Connect_Resp {
+    required string port = 1;
+}
+
+message Num_Brds_Resp {
+    required uint32 num_brds = 1;
+}
