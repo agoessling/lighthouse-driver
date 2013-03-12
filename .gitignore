@@ -1,3 +1,7 @@
+# protobuf auto-gen
+*_pb2.py
+
+# python
 *.py[cod]
 
 # C extensions
