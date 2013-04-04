@@ -6,11 +6,11 @@ from google.protobuf.message import EncodeError
 import serial
 # Don't why this won't import correctly, but this works...
 from serial.tools.list_ports import grep as port_grep
+import time
 import zmq
 
-class LightHouse():
-    _ser = None
-
+## This is the base class used by the emulator and real (hardware) driver ##
+class LightHouseBase():
     # Constants
     _SERIAL_BAUD = 250000
 
@@ -30,7 +30,8 @@ class LightHouse():
     _CMD_SET_DC = 0x09
     _CMD_NUM_BRDS = 0x0A
 
-    def run(self):
+
+    def setup_zmq(self):
         # Setup 0MQ
         context = zmq.Context()
 
@@ -39,55 +40,63 @@ class LightHouse():
         socket = context.socket(zmq.REP)
         socket.bind('tcp://*:1873')
 
-        # Wait For and Process Commands
-        while True:
-            # Create and Parse Command
-            cmd = lh.Command()
+        return socket
+        
 
-            try:
-                cmd.ParseFromString(socket.recv())
-            # Parse Error
-            except EncodeError:
-                # Create Response
-                resp = lh.Response()
-                # Dummy cmd Type
-                resp.cmd = lh.Command.HELLO
-                resp.error.error_type = lh.Error.UNKWN_CMD
-                resp.error.string = 'Unable to parse string as command.'
-                # Send Response
-                socket.send(resp.SerializeToString())
-                # Skip To Next Command Parse
-                continue
+    def poll_zmq(self, socket):
+        # Create and Parse Command
+        cmd = lh.Command()
 
-            # Send Command To Correct Handling Function
-            if cmd.cmd_type == lh.Command.CONNECT:
-                resp = self.connect(cmd)
-            elif cmd.cmd_type == lh.Command.DISCONNECT:
-                resp = self.disconnect(cmd)
-            elif cmd.cmd_type == lh.Command.HELLO:
-                resp = self.hello(cmd)
-            elif cmd.cmd_type == lh.Command.EN_LED:
-                resp = self.en_led(cmd)
-            elif cmd.cmd_type == lh.Command.DIS_LED:
-                resp = self.dis_led(cmd)
-            elif cmd.cmd_type == lh.Command.SET_DC:
-                resp = self.set_dc(cmd)
-            elif cmd.cmd_type == lh.Command.SEND_DATA:
-                resp = self.send_data(cmd)
-            elif cmd.cmd_type == lh.Command.LAT_DATA:
-                resp = self.lat_data(cmd)
-            elif cmd.cmd_type == lh.Command.NUM_BRDS:
-                resp = self.num_brds(cmd)
-            # Unrecognized Command
-            else:
-                # Error Response
-                resp = lh.Response()
-                resp.cmd = cmd.cmd_type
-                resp.error.error_type = lh.Error.UNKWN_CMD
-                resp.error.string = 'Unknown command type.'
+        try:
+            cmd.ParseFromString(socket.recv(flags=zmq.NOBLOCK))
 
+        # No Message Ready
+        except zmq.ZMQError:
+            return True
+
+        # Parse Decode Error
+        except EncodeError:
+            # Create Response
+            resp = lh.Response()
+            # Dummy cmd Type
+            resp.cmd = lh.Command.HELLO
+            resp.error.error_type = lh.Error.UNKWN_CMD
+            resp.error.string = 'Unable to parse string as command.'
             # Send Response
             socket.send(resp.SerializeToString())
+            # Skip To Next Command Parse
+            return False
+
+        # Send Command To Correct Handling Function
+        if cmd.cmd_type == lh.Command.CONNECT:
+            resp = self.connect(cmd)
+        elif cmd.cmd_type == lh.Command.DISCONNECT:
+            resp = self.disconnect(cmd)
+        elif cmd.cmd_type == lh.Command.HELLO:
+            resp = self.hello(cmd)
+        elif cmd.cmd_type == lh.Command.EN_LED:
+            resp = self.en_led(cmd)
+        elif cmd.cmd_type == lh.Command.DIS_LED:
+            resp = self.dis_led(cmd)
+        elif cmd.cmd_type == lh.Command.SET_DC:
+            resp = self.set_dc(cmd)
+        elif cmd.cmd_type == lh.Command.SEND_DATA:
+            resp = self.send_data(cmd)
+        elif cmd.cmd_type == lh.Command.LAT_DATA:
+            resp = self.lat_data(cmd)
+        elif cmd.cmd_type == lh.Command.NUM_BRDS:
+            resp = self.num_brds(cmd)
+        # Unrecognized Command
+        else:
+            # Error Response
+            resp = lh.Response()
+            resp.cmd = cmd.cmd_type
+            resp.error.error_type = lh.Error.UNKWN_CMD
+            resp.error.string = 'Unknown command type.'
+
+        # Send Response
+        socket.send(resp.SerializeToString())
+        return True
 
 
     def resp_unformed_cmd(self, cmd, string='Command not fully formed.'):
@@ -97,7 +106,23 @@ class LightHouse():
         resp.error.string = string
 
         return resp
+        
 
+## This is the class instantiated for real (hardware) interaction ##
+class LightHouse(LightHouseBase):
+
+    def __init__(self):
+        self._ser = None
+
+    
+    def run(self):
+        # Setup 0MQ
+        socket = self.setup_zmq()
+
+        # Wait For and Process Commands
+        while self.poll_zmq(socket):
+            pass
+        
 
     def cleanup(self):
         if self._ser:
