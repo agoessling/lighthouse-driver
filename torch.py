@@ -51,7 +51,7 @@ class Torch():
         self.en_led()
         print 'LEDs enabled.'
 
-        frame = collections.deque([(1,0,0)]+[(0,0,0)]*31, 32)
+        frame = collections.deque([(1,0,1)]+[(0,0,0)]*31, 32)
         
         try:
             while True:
