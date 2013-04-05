@@ -1,12 +1,17 @@
 #!/usr/bin/python
 
+import argparse
 import array
+import collections
 import lighthouse_pb2 as lh
 from google.protobuf.message import EncodeError
+import math
 import serial
 # Don't why this won't import correctly, but this works...
 from serial.tools.list_ports import grep as port_grep
 import time
+from Tkinter import *
+import ttk
 import zmq
 
 ## This is the base class used by the emulator and real (hardware) driver ##
@@ -106,11 +111,198 @@ class LightHouseBase():
         resp.error.string = string
 
         return resp
+
+
+class LightHouseEmulator(LightHouseBase):
+    _CANVAS_BORDER = 10
+
+    def __init__(self, row_num, col_num):
+        root = Tk()
+        root.title('LightHouse Emulator')
+
+        content = ttk.Frame(root)
+        canvas = Canvas(content, width=600, height=600)
+        log_frame = ttk.Frame(content)
+        log_text = Text(log_frame, height=8, state='disabled')
+        log_scroll = ttk.Scrollbar(log_frame,
+                            orient=VERTICAL,
+                            command=log_text.yview)
+        log_text.configure(yscrollcommand=log_scroll.set)
+
+        content.grid(column=0, row=0, sticky=W+E+N+S)
+        canvas.grid(column=0, row=0, sticky=W+E+N+S)
+        log_frame.grid(column=0, row=1, stick=W+E)
+        log_text.grid(column=0, row=0, sticky=W+E)
+        log_scroll.grid(column=1, row=0, sticky=N+S)
+
+        root.grid_columnconfigure(0, weight=1)
+        root.grid_rowconfigure(0, weight=1)
+
+        content.grid_columnconfigure(0, weight=1)
+        content.grid_rowconfigure(0, weight=1)
+
+        log_frame.grid_columnconfigure(0, weight=1)
+        log_frame.grid_rowconfigure(0, weight=1)
+
+        canvas.bind('<Configure>', self.redraw_canvas)
+
+        c_width = int(canvas['width'])
+        c_height = int(canvas['height'])
+
+        cell_size = min((c_width-2*self._CANVAS_BORDER)/col_num,
+                            (c_height-2*self._CANVAS_BORDER)/row_num)
+
+        cells = []
+
+        for row in range(row_num):
+            for col in range(col_num):
+                cell = canvas.create_rectangle(
+                                        cell_size*col+self._CANVAS_BORDER,
+                                        cell_size*row+self._CANVAS_BORDER,
+                                        cell_size*(col+1)+self._CANVAS_BORDER,
+                                        cell_size*(row+1)+self._CANVAS_BORDER,
+                                        fill='black',
+                                        width=3)
+                cells.append(cell)
+
+        self.root = root
+        self.canvas = canvas
+        self.log_text = log_text
+
+        self.row_num = row_num
+        self.col_num = col_num
+        self.cells = cells
+        self.latched_data = collections.deque([0]*(len(cells)*3),
+                                            3*len(cells))
+        self.reg_data = collections.deque([0]*(len(cells)*3),
+                                            3*len(cells))
+
+
+    def log(self, text):
+        self.log_text.configure(state='normal')
+        self.log_text.insert(END, text)
+        self.log_text.configure(state='disabled')
+
+
+    def redraw_canvas(self, event):
+        c_width = event.width
+        c_height = event.height
+        cell_size = min((c_width-2*self._CANVAS_BORDER)/self.col_num,
+                            (c_height-2*self._CANVAS_BORDER)/self.row_num)
+
+        i = 0
+
+        for row in range(self.row_num):
+            for col in range(self.col_num):
+                self.canvas.coords(self.cells[i],
+                                cell_size*col+self._CANVAS_BORDER,
+                                cell_size*row+self._CANVAS_BORDER,
+                                cell_size*(col+1)+self._CANVAS_BORDER,
+                                cell_size*(row+1)+self._CANVAS_BORDER)
+                i += 1
+
+
+    def update_cell_color(self, color_list):
+        for i in range(len(self.cells)):
+            color = '#{:03x}{:03x}{:03x}'.format(color_list[-3*i-3],
+                                                 color_list[-3*i-2],
+                                                 color_list[-3*i-1])
+            self.canvas.itemconfig(self.cells[i], fill=color)
+
+    
+    def poll_zmq_wrapper(self):
+        self.poll_zmq(self.socket)
+        self.root.after(5, self.poll_zmq_wrapper)
         
+
+    def run(self):
+        # Setup 0MQ
+        self.socket = self.setup_zmq()
+
+        # Schedule 0MQ Polling
+        self.root.after(5, self.poll_zmq_wrapper)
+
+        # Run GUI Loop
+        self.root.mainloop()
+
+
+    def connect(self, cmd):
+        self.log('Received CONNECT command\n')
+        resp = lh.Response()
+        resp.cmd = cmd.cmd_type
+        resp.connect_resp.port = 'EMULATOR'
+        return resp
+
+    def disconnect(self, cmd):
+        self.log('Received DISCONNECT command\n')
+        resp = lh.Response()
+        resp.cmd = cmd.cmd_type
+        return resp
+
+    def hello(self, cmd):
+        self.log('Received HELLO command\n')
+        resp = lh.Response()
+        resp.cmd = cmd.cmd_type
+        return resp
+         
+    def en_led(self, cmd):
+        self.log('Received EN_LED command\n')
+        self.update_cell_color(self.latched_data)
+        resp = lh.Response()
+        resp.cmd = cmd.cmd_type
+        return resp
+
+    def dis_led(self, cmd):
+        self.log('Received DIS_LED command\n')
+        self.update_cell_color([0]*(3*len(self.cells)))
+        resp = lh.Response()
+        resp.cmd = cmd.cmd_type
+        return resp
+
+    def lat_data(self, cmd):
+        self.latched_data = self.reg_data
+        self.update_cell_color(self.latched_data)
+        resp = lh.Response()
+        resp.cmd = cmd.cmd_type
+        return resp
+
+    def set_dc(self, cmd):
+        # No DC Data
+        if not cmd.set_dc:
+            return self.resp_unformed_cmd(cmd, 'No DC Data')
+
+        self.log('Received SET_DC command with: {}\n'.format(cmd.set_dc.level))
+        resp = lh.Response()
+        resp.cmd = cmd.cmd_type
+        return resp
+
+    def send_data(self, cmd):
+        # No GS Data
+        if not cmd.send_data:
+            return self.resp_unformed_cmd(cmd, 'No GS Data')
+
+        # Incorrect Data Length
+        if not len(cmd.send_data.data) == 48:
+            return self.resp_unformed_cmd(cmd, 'Wrong Data Length')
+
+        self.reg_data.extend(cmd.send_data.data)
+
+        resp = lh.Response()
+        resp.cmd = cmd.cmd_type
+        return resp
+
+    def num_brds(self, cmd):
+        num_brds = int(math.ceil(len(self.cells)/16.0))
+        self.log('Received NUM_BRDS command sent: {}\n'.format(num_brds))
+
+        resp = lh.Response()
+        resp.cmd = cmd.cmd_type
+        resp.num_brds_resp.num_brds = num_brds
+        return resp
+
 
 ## This is the class instantiated for real (hardware) interaction ##
 class LightHouse(LightHouseBase):
-
     def __init__(self):
         self._ser = None
 
@@ -326,8 +518,6 @@ class LightHouse(LightHouseBase):
 
         # Incorrect Data Length
         if not len(cmd.send_data.data) == 48:
-            print len(cmd.send_data.data)
-            print cmd.send_data.data
             return self.resp_unformed_cmd(cmd, 'Wrong Data Length')
 
         # Send CMD
@@ -486,7 +676,30 @@ class LightHouse(LightHouseBase):
             return byte
 
 
+def col_row_checker(string):
+    try:
+        row,col = string.split('x',1)
+        col = int(col)
+        row = int(row)
+        return {'col':col, 'row':row}
+    except:
+        msg = "%r is not in the correct COLxROW format"%string
+        raise argparse.ArgumentTypeError(msg)
+
+
 # Run main() When Run as Script
 if __name__ == '__main__':
-    lh_driver = LightHouse()
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-e', '--emulator',
+                type=col_row_checker,
+                help='use on-screen emulator for display'
+                        ' - takes ROWxCOL argument.')
+    args = parser.parse_args()
+
+    if args.emulator:
+        lh_driver = LightHouseEmulator(args.emulator['row'],
+                                        args.emulator['col'])
+    else:
+        lh_driver = LightHouse()
+
     lh_driver.run()

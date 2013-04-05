@@ -11,7 +11,8 @@ class Torch():
     def __init__(self):
         # Run LightHouse Driver
         self.p = subprocess.Popen(
-            ['python', 'lighthouse.py']
+            #['python', 'lighthouse.py']
+            ['python', 'lighthouse.py', '-e', '8x4']
         )
 
         # Setup 0MQ Communication
@@ -50,7 +51,7 @@ class Torch():
         self.en_led()
         print 'LEDs enabled.'
 
-        frame = collections.deque([(1,1,1)]+[(0,0,0)]*31, 32)
+        frame = collections.deque([(1,0,0)]+[(0,0,0)]*31, 32)
         
         try:
             while True:
