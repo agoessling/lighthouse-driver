@@ -172,6 +172,7 @@ class LightHouseEmulator(LightHouseBase):
         self.row_num = row_num
         self.col_num = col_num
         self.cells = cells
+        self.enabled = False
         self.latched_data = collections.deque([0]*(len(cells)*3),
                                             3*len(cells))
         self.reg_data = collections.deque([0]*(len(cells)*3),
@@ -247,6 +248,7 @@ class LightHouseEmulator(LightHouseBase):
          
     def en_led(self, cmd):
         self.log('Received EN_LED command\n')
+        self.enabled = True
         self.update_cell_color(self.latched_data)
         resp = lh.Response()
         resp.cmd = cmd.cmd_type
@@ -254,6 +256,7 @@ class LightHouseEmulator(LightHouseBase):
 
     def dis_led(self, cmd):
         self.log('Received DIS_LED command\n')
+        self.enabled = False
         self.update_cell_color([0]*(3*len(self.cells)))
         resp = lh.Response()
         resp.cmd = cmd.cmd_type
@@ -261,7 +264,8 @@ class LightHouseEmulator(LightHouseBase):
 
     def lat_data(self, cmd):
         self.latched_data = self.reg_data
-        self.update_cell_color(self.latched_data)
+        if self.enabled:
+            self.update_cell_color(self.latched_data)
         resp = lh.Response()
         resp.cmd = cmd.cmd_type
         return resp
