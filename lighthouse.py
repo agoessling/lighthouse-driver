@@ -56,7 +56,9 @@ class LightHouseBase():
             cmd.ParseFromString(socket.recv(flags=zmq.NOBLOCK))
 
         # No Message Ready
-        except zmq.ZMQError:
+        except zmq.ZMQError as e:
+            if hasattr(e,'msg'):
+                print e.msg
             return True
 
         # Parse Decode Error
@@ -71,6 +73,7 @@ class LightHouseBase():
             socket.send(resp.SerializeToString())
             # Skip To Next Command Parse
             return False
+
 
         # Send Command To Correct Handling Function
         if cmd.cmd_type == lh.Command.CONNECT:
