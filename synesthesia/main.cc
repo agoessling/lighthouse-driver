@@ -1,16 +1,31 @@
 #include <cstdlib>
+#include <iostream>
+#include <unistd.h>
+#include <sys/types.h>
 #include "lh.hpp"
 #include "zmq.hpp"
 
 int main(){
-    // Start LightHouse Driver
-    std::system("python ../lighthouse.py");
+    // Initialize Driver
+    lh::Driver driver("localhost", 1873);
+    driver.init();
 
-    // Setup 0MQ Communication
-    // One Thread
-    zmq::context_t context(1);
-    zmq::socket_t socket(context, ZMQ_REQ);
-    socket.bind("tcp://localhost:1873");
+    lh::Reply reply;
+
+    // Connect to Boards
+    reply = driver.connect();
+    if(reply.error) goto process_error;
+    std::cout << "Connected to Port: " << reply.str << std::endl << std::flush;
+
+    // Get Number of Boards
+    reply = driver.get_num_brds();
+    if(reply.error) goto process_error;
+    std::cout << "Connected to " << reply.value << " board(s)." << std::endl
+                << std::flush;
 
     return 0;
+
+process_error:
+    std::cout << reply.str << std::flush;
+    return -1;
 }
