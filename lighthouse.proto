@@ -1,4 +1,4 @@
-package lighthouse;
+package lh;
 
 // This file defines the Protocol Buffer API
 // used to communicate with LightHouse.
