@@ -1,7 +1,7 @@
 CC=g++
 CFLAGS=-g -c -Wall
-LDFLAGS=-g -lzmq
-SOURCES=main.cc
+LDFLAGS=-g -lzmq -lprotobuf
+SOURCES=main.cc lh.cc lighthouse.pb.cc
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=synesthesia
 
