@@ -13,7 +13,7 @@
 #include <google/protobuf/wire_format.h>
 // @@protoc_insertion_point(includes)
 
-namespace lighthouse {
+namespace lh {
 
 namespace {
 
@@ -373,35 +373,32 @@ void protobuf_AddDesc_lighthouse_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\020lighthouse.proto\022\nlighthouse\"\232\004\n\007Comma"
-    "nd\022.\n\010cmd_type\030\001 \002(\0162\034.lighthouse.Comman"
-    "d.Commands\022$\n\007connect\030\002 \001(\0132\023.lighthouse"
-    ".Connect\022*\n\ndisconnect\030\003 \001(\0132\026.lighthous"
-    "e.Disconnect\022 \n\005hello\030\004 \001(\0132\021.lighthouse"
-    ".Hello\022\"\n\006en_led\030\005 \001(\0132\022.lighthouse.En_L"
-    "ED\022$\n\007dis_led\030\006 \001(\0132\023.lighthouse.Dis_LED"
-    "\022\"\n\006set_dc\030\007 \001(\0132\022.lighthouse.Set_DC\022(\n\t"
-    "send_data\030\010 \001(\0132\025.lighthouse.Send_Data\022&"
-    "\n\010lat_data\030\t \001(\0132\024.lighthouse.Lat_Data\022&"
-    "\n\010num_brds\030\n \001(\0132\024.lighthouse.Num_Brds\"\202"
-    "\001\n\010Commands\022\013\n\007CONNECT\020\001\022\016\n\nDISCONNECT\020\002"
-    "\022\t\n\005HELLO\020\003\022\n\n\006EN_LED\020\004\022\013\n\007DIS_LED\020\005\022\n\n\006"
-    "SET_DC\020\006\022\r\n\tSEND_DATA\020\007\022\014\n\010LAT_DATA\020\010\022\014\n"
-    "\010NUM_BRDS\020\t\"\027\n\007Connect\022\014\n\004port\030\001 \001(\t\"\014\n\n"
-    "Disconnect\"\007\n\005Hello\"\010\n\006En_LED\"\t\n\007Dis_LED"
-    "\")\n\006Set_DC\022\r\n\005level\030\001 \002(\r\022\020\n\010num_brds\030\002 "
-    "\002(\r\"\035\n\tSend_Data\022\020\n\004data\030\001 \003(\rB\002\020\001\"\n\n\010La"
-    "t_Data\"\n\n\010Num_Brds\"\271\001\n\010Response\022)\n\003cmd\030\001"
-    " \002(\0162\034.lighthouse.Command.Commands\022 \n\005er"
-    "ror\030\002 \001(\0132\021.lighthouse.Error\022.\n\014connect_"
-    "resp\030\003 \001(\0132\030.lighthouse.Connect_Resp\0220\n\r"
-    "num_brds_resp\030\004 \001(\0132\031.lighthouse.Num_Brd"
-    "s_Resp\"\231\001\n\005Error\022,\n\nerror_type\030\001 \002(\0162\030.l"
-    "ighthouse.Error.Errors\022\016\n\006string\030\002 \001(\t\"R"
-    "\n\006Errors\022\n\n\006NO_BRD\020\001\022\013\n\007NO_PORT\020\002\022\010\n\004TEM"
-    "P\020\003\022\007\n\003LOD\020\004\022\r\n\tUNKWN_CMD\020\005\022\r\n\tUNFMD_CMD"
-    "\020\006\"\034\n\014Connect_Resp\022\014\n\004port\030\001 \002(\t\"!\n\rNum_"
-    "Brds_Resp\022\020\n\010num_brds\030\001 \002(\r", 1147);
+    "\n\020lighthouse.proto\022\002lh\"\312\003\n\007Command\022&\n\010cm"
+    "d_type\030\001 \002(\0162\024.lh.Command.Commands\022\034\n\007co"
+    "nnect\030\002 \001(\0132\013.lh.Connect\022\"\n\ndisconnect\030\003"
+    " \001(\0132\016.lh.Disconnect\022\030\n\005hello\030\004 \001(\0132\t.lh"
+    ".Hello\022\032\n\006en_led\030\005 \001(\0132\n.lh.En_LED\022\034\n\007di"
+    "s_led\030\006 \001(\0132\013.lh.Dis_LED\022\032\n\006set_dc\030\007 \001(\013"
+    "2\n.lh.Set_DC\022 \n\tsend_data\030\010 \001(\0132\r.lh.Sen"
+    "d_Data\022\036\n\010lat_data\030\t \001(\0132\014.lh.Lat_Data\022\036"
+    "\n\010num_brds\030\n \001(\0132\014.lh.Num_Brds\"\202\001\n\010Comma"
+    "nds\022\013\n\007CONNECT\020\001\022\016\n\nDISCONNECT\020\002\022\t\n\005HELL"
+    "O\020\003\022\n\n\006EN_LED\020\004\022\013\n\007DIS_LED\020\005\022\n\n\006SET_DC\020\006"
+    "\022\r\n\tSEND_DATA\020\007\022\014\n\010LAT_DATA\020\010\022\014\n\010NUM_BRD"
+    "S\020\t\"\027\n\007Connect\022\014\n\004port\030\001 \001(\t\"\014\n\nDisconne"
+    "ct\"\007\n\005Hello\"\010\n\006En_LED\"\t\n\007Dis_LED\")\n\006Set_"
+    "DC\022\r\n\005level\030\001 \002(\r\022\020\n\010num_brds\030\002 \002(\r\"\035\n\tS"
+    "end_Data\022\020\n\004data\030\001 \003(\rB\002\020\001\"\n\n\010Lat_Data\"\n"
+    "\n\010Num_Brds\"\231\001\n\010Response\022!\n\003cmd\030\001 \002(\0162\024.l"
+    "h.Command.Commands\022\030\n\005error\030\002 \001(\0132\t.lh.E"
+    "rror\022&\n\014connect_resp\030\003 \001(\0132\020.lh.Connect_"
+    "Resp\022(\n\rnum_brds_resp\030\004 \001(\0132\021.lh.Num_Brd"
+    "s_Resp\"\221\001\n\005Error\022$\n\nerror_type\030\001 \002(\0162\020.l"
+    "h.Error.Errors\022\016\n\006string\030\002 \001(\t\"R\n\006Errors"
+    "\022\n\n\006NO_BRD\020\001\022\013\n\007NO_PORT\020\002\022\010\n\004TEMP\020\003\022\007\n\003L"
+    "OD\020\004\022\r\n\tUNKWN_CMD\020\005\022\r\n\tUNFMD_CMD\020\006\"\034\n\014Co"
+    "nnect_Resp\022\014\n\004port\030\001 \002(\t\"!\n\rNum_Brds_Res"
+    "p\022\020\n\010num_brds\030\001 \002(\r", 1019);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "lighthouse.proto", &protobuf_RegisterTypes);
   Command::default_instance_ = new Command();
@@ -499,15 +496,15 @@ Command::Command()
 }
 
 void Command::InitAsDefaultInstance() {
-  connect_ = const_cast< ::lighthouse::Connect*>(&::lighthouse::Connect::default_instance());
-  disconnect_ = const_cast< ::lighthouse::Disconnect*>(&::lighthouse::Disconnect::default_instance());
-  hello_ = const_cast< ::lighthouse::Hello*>(&::lighthouse::Hello::default_instance());
-  en_led_ = const_cast< ::lighthouse::En_LED*>(&::lighthouse::En_LED::default_instance());
-  dis_led_ = const_cast< ::lighthouse::Dis_LED*>(&::lighthouse::Dis_LED::default_instance());
-  set_dc_ = const_cast< ::lighthouse::Set_DC*>(&::lighthouse::Set_DC::default_instance());
-  send_data_ = const_cast< ::lighthouse::Send_Data*>(&::lighthouse::Send_Data::default_instance());
-  lat_data_ = const_cast< ::lighthouse::Lat_Data*>(&::lighthouse::Lat_Data::default_instance());
-  num_brds_ = const_cast< ::lighthouse::Num_Brds*>(&::lighthouse::Num_Brds::default_instance());
+  connect_ = const_cast< ::lh::Connect*>(&::lh::Connect::default_instance());
+  disconnect_ = const_cast< ::lh::Disconnect*>(&::lh::Disconnect::default_instance());
+  hello_ = const_cast< ::lh::Hello*>(&::lh::Hello::default_instance());
+  en_led_ = const_cast< ::lh::En_LED*>(&::lh::En_LED::default_instance());
+  dis_led_ = const_cast< ::lh::Dis_LED*>(&::lh::Dis_LED::default_instance());
+  set_dc_ = const_cast< ::lh::Set_DC*>(&::lh::Set_DC::default_instance());
+  send_data_ = const_cast< ::lh::Send_Data*>(&::lh::Send_Data::default_instance());
+  lat_data_ = const_cast< ::lh::Lat_Data*>(&::lh::Lat_Data::default_instance());
+  num_brds_ = const_cast< ::lh::Num_Brds*>(&::lh::Num_Brds::default_instance());
 }
 
 Command::Command(const Command& from)
@@ -573,33 +570,33 @@ void Command::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     cmd_type_ = 1;
     if (has_connect()) {
-      if (connect_ != NULL) connect_->::lighthouse::Connect::Clear();
+      if (connect_ != NULL) connect_->::lh::Connect::Clear();
     }
     if (has_disconnect()) {
-      if (disconnect_ != NULL) disconnect_->::lighthouse::Disconnect::Clear();
+      if (disconnect_ != NULL) disconnect_->::lh::Disconnect::Clear();
     }
     if (has_hello()) {
-      if (hello_ != NULL) hello_->::lighthouse::Hello::Clear();
+      if (hello_ != NULL) hello_->::lh::Hello::Clear();
     }
     if (has_en_led()) {
-      if (en_led_ != NULL) en_led_->::lighthouse::En_LED::Clear();
+      if (en_led_ != NULL) en_led_->::lh::En_LED::Clear();
     }
     if (has_dis_led()) {
-      if (dis_led_ != NULL) dis_led_->::lighthouse::Dis_LED::Clear();
+      if (dis_led_ != NULL) dis_led_->::lh::Dis_LED::Clear();
     }
     if (has_set_dc()) {
-      if (set_dc_ != NULL) set_dc_->::lighthouse::Set_DC::Clear();
+      if (set_dc_ != NULL) set_dc_->::lh::Set_DC::Clear();
     }
     if (has_send_data()) {
-      if (send_data_ != NULL) send_data_->::lighthouse::Send_Data::Clear();
+      if (send_data_ != NULL) send_data_->::lh::Send_Data::Clear();
     }
   }
   if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (has_lat_data()) {
-      if (lat_data_ != NULL) lat_data_->::lighthouse::Lat_Data::Clear();
+      if (lat_data_ != NULL) lat_data_->::lh::Lat_Data::Clear();
     }
     if (has_num_brds()) {
-      if (num_brds_ != NULL) num_brds_->::lighthouse::Num_Brds::Clear();
+      if (num_brds_ != NULL) num_brds_->::lh::Num_Brds::Clear();
     }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -612,7 +609,7 @@ bool Command::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required .lighthouse.Command.Commands cmd_type = 1;
+      // required .lh.Command.Commands cmd_type = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -620,8 +617,8 @@ bool Command::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
                  input, &value)));
-          if (::lighthouse::Command_Commands_IsValid(value)) {
-            set_cmd_type(static_cast< ::lighthouse::Command_Commands >(value));
+          if (::lh::Command_Commands_IsValid(value)) {
+            set_cmd_type(static_cast< ::lh::Command_Commands >(value));
           } else {
             mutable_unknown_fields()->AddVarint(1, value);
           }
@@ -632,7 +629,7 @@ bool Command::MergePartialFromCodedStream(
         break;
       }
       
-      // optional .lighthouse.Connect connect = 2;
+      // optional .lh.Connect connect = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -646,7 +643,7 @@ bool Command::MergePartialFromCodedStream(
         break;
       }
       
-      // optional .lighthouse.Disconnect disconnect = 3;
+      // optional .lh.Disconnect disconnect = 3;
       case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -660,7 +657,7 @@ bool Command::MergePartialFromCodedStream(
         break;
       }
       
-      // optional .lighthouse.Hello hello = 4;
+      // optional .lh.Hello hello = 4;
       case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -674,7 +671,7 @@ bool Command::MergePartialFromCodedStream(
         break;
       }
       
-      // optional .lighthouse.En_LED en_led = 5;
+      // optional .lh.En_LED en_led = 5;
       case 5: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -688,7 +685,7 @@ bool Command::MergePartialFromCodedStream(
         break;
       }
       
-      // optional .lighthouse.Dis_LED dis_led = 6;
+      // optional .lh.Dis_LED dis_led = 6;
       case 6: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -702,7 +699,7 @@ bool Command::MergePartialFromCodedStream(
         break;
       }
       
-      // optional .lighthouse.Set_DC set_dc = 7;
+      // optional .lh.Set_DC set_dc = 7;
       case 7: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -716,7 +713,7 @@ bool Command::MergePartialFromCodedStream(
         break;
       }
       
-      // optional .lighthouse.Send_Data send_data = 8;
+      // optional .lh.Send_Data send_data = 8;
       case 8: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -730,7 +727,7 @@ bool Command::MergePartialFromCodedStream(
         break;
       }
       
-      // optional .lighthouse.Lat_Data lat_data = 9;
+      // optional .lh.Lat_Data lat_data = 9;
       case 9: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -744,7 +741,7 @@ bool Command::MergePartialFromCodedStream(
         break;
       }
       
-      // optional .lighthouse.Num_Brds num_brds = 10;
+      // optional .lh.Num_Brds num_brds = 10;
       case 10: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -776,61 +773,61 @@ bool Command::MergePartialFromCodedStream(
 
 void Command::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // required .lighthouse.Command.Commands cmd_type = 1;
+  // required .lh.Command.Commands cmd_type = 1;
   if (has_cmd_type()) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       1, this->cmd_type(), output);
   }
   
-  // optional .lighthouse.Connect connect = 2;
+  // optional .lh.Connect connect = 2;
   if (has_connect()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       2, this->connect(), output);
   }
   
-  // optional .lighthouse.Disconnect disconnect = 3;
+  // optional .lh.Disconnect disconnect = 3;
   if (has_disconnect()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       3, this->disconnect(), output);
   }
   
-  // optional .lighthouse.Hello hello = 4;
+  // optional .lh.Hello hello = 4;
   if (has_hello()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       4, this->hello(), output);
   }
   
-  // optional .lighthouse.En_LED en_led = 5;
+  // optional .lh.En_LED en_led = 5;
   if (has_en_led()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       5, this->en_led(), output);
   }
   
-  // optional .lighthouse.Dis_LED dis_led = 6;
+  // optional .lh.Dis_LED dis_led = 6;
   if (has_dis_led()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       6, this->dis_led(), output);
   }
   
-  // optional .lighthouse.Set_DC set_dc = 7;
+  // optional .lh.Set_DC set_dc = 7;
   if (has_set_dc()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       7, this->set_dc(), output);
   }
   
-  // optional .lighthouse.Send_Data send_data = 8;
+  // optional .lh.Send_Data send_data = 8;
   if (has_send_data()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       8, this->send_data(), output);
   }
   
-  // optional .lighthouse.Lat_Data lat_data = 9;
+  // optional .lh.Lat_Data lat_data = 9;
   if (has_lat_data()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       9, this->lat_data(), output);
   }
   
-  // optional .lighthouse.Num_Brds num_brds = 10;
+  // optional .lh.Num_Brds num_brds = 10;
   if (has_num_brds()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       10, this->num_brds(), output);
@@ -844,69 +841,69 @@ void Command::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* Command::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // required .lighthouse.Command.Commands cmd_type = 1;
+  // required .lh.Command.Commands cmd_type = 1;
   if (has_cmd_type()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       1, this->cmd_type(), target);
   }
   
-  // optional .lighthouse.Connect connect = 2;
+  // optional .lh.Connect connect = 2;
   if (has_connect()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         2, this->connect(), target);
   }
   
-  // optional .lighthouse.Disconnect disconnect = 3;
+  // optional .lh.Disconnect disconnect = 3;
   if (has_disconnect()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         3, this->disconnect(), target);
   }
   
-  // optional .lighthouse.Hello hello = 4;
+  // optional .lh.Hello hello = 4;
   if (has_hello()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         4, this->hello(), target);
   }
   
-  // optional .lighthouse.En_LED en_led = 5;
+  // optional .lh.En_LED en_led = 5;
   if (has_en_led()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         5, this->en_led(), target);
   }
   
-  // optional .lighthouse.Dis_LED dis_led = 6;
+  // optional .lh.Dis_LED dis_led = 6;
   if (has_dis_led()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         6, this->dis_led(), target);
   }
   
-  // optional .lighthouse.Set_DC set_dc = 7;
+  // optional .lh.Set_DC set_dc = 7;
   if (has_set_dc()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         7, this->set_dc(), target);
   }
   
-  // optional .lighthouse.Send_Data send_data = 8;
+  // optional .lh.Send_Data send_data = 8;
   if (has_send_data()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         8, this->send_data(), target);
   }
   
-  // optional .lighthouse.Lat_Data lat_data = 9;
+  // optional .lh.Lat_Data lat_data = 9;
   if (has_lat_data()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         9, this->lat_data(), target);
   }
   
-  // optional .lighthouse.Num_Brds num_brds = 10;
+  // optional .lh.Num_Brds num_brds = 10;
   if (has_num_brds()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -924,55 +921,55 @@ int Command::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required .lighthouse.Command.Commands cmd_type = 1;
+    // required .lh.Command.Commands cmd_type = 1;
     if (has_cmd_type()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->cmd_type());
     }
     
-    // optional .lighthouse.Connect connect = 2;
+    // optional .lh.Connect connect = 2;
     if (has_connect()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->connect());
     }
     
-    // optional .lighthouse.Disconnect disconnect = 3;
+    // optional .lh.Disconnect disconnect = 3;
     if (has_disconnect()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->disconnect());
     }
     
-    // optional .lighthouse.Hello hello = 4;
+    // optional .lh.Hello hello = 4;
     if (has_hello()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->hello());
     }
     
-    // optional .lighthouse.En_LED en_led = 5;
+    // optional .lh.En_LED en_led = 5;
     if (has_en_led()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->en_led());
     }
     
-    // optional .lighthouse.Dis_LED dis_led = 6;
+    // optional .lh.Dis_LED dis_led = 6;
     if (has_dis_led()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->dis_led());
     }
     
-    // optional .lighthouse.Set_DC set_dc = 7;
+    // optional .lh.Set_DC set_dc = 7;
     if (has_set_dc()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->set_dc());
     }
     
-    // optional .lighthouse.Send_Data send_data = 8;
+    // optional .lh.Send_Data send_data = 8;
     if (has_send_data()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -981,14 +978,14 @@ int Command::ByteSize() const {
     
   }
   if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
-    // optional .lighthouse.Lat_Data lat_data = 9;
+    // optional .lh.Lat_Data lat_data = 9;
     if (has_lat_data()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->lat_data());
     }
     
-    // optional .lighthouse.Num_Brds num_brds = 10;
+    // optional .lh.Num_Brds num_brds = 10;
     if (has_num_brds()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -1026,33 +1023,33 @@ void Command::MergeFrom(const Command& from) {
       set_cmd_type(from.cmd_type());
     }
     if (from.has_connect()) {
-      mutable_connect()->::lighthouse::Connect::MergeFrom(from.connect());
+      mutable_connect()->::lh::Connect::MergeFrom(from.connect());
     }
     if (from.has_disconnect()) {
-      mutable_disconnect()->::lighthouse::Disconnect::MergeFrom(from.disconnect());
+      mutable_disconnect()->::lh::Disconnect::MergeFrom(from.disconnect());
     }
     if (from.has_hello()) {
-      mutable_hello()->::lighthouse::Hello::MergeFrom(from.hello());
+      mutable_hello()->::lh::Hello::MergeFrom(from.hello());
     }
     if (from.has_en_led()) {
-      mutable_en_led()->::lighthouse::En_LED::MergeFrom(from.en_led());
+      mutable_en_led()->::lh::En_LED::MergeFrom(from.en_led());
     }
     if (from.has_dis_led()) {
-      mutable_dis_led()->::lighthouse::Dis_LED::MergeFrom(from.dis_led());
+      mutable_dis_led()->::lh::Dis_LED::MergeFrom(from.dis_led());
     }
     if (from.has_set_dc()) {
-      mutable_set_dc()->::lighthouse::Set_DC::MergeFrom(from.set_dc());
+      mutable_set_dc()->::lh::Set_DC::MergeFrom(from.set_dc());
     }
     if (from.has_send_data()) {
-      mutable_send_data()->::lighthouse::Send_Data::MergeFrom(from.send_data());
+      mutable_send_data()->::lh::Send_Data::MergeFrom(from.send_data());
     }
   }
   if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (from.has_lat_data()) {
-      mutable_lat_data()->::lighthouse::Lat_Data::MergeFrom(from.lat_data());
+      mutable_lat_data()->::lh::Lat_Data::MergeFrom(from.lat_data());
     }
     if (from.has_num_brds()) {
-      mutable_num_brds()->::lighthouse::Num_Brds::MergeFrom(from.num_brds());
+      mutable_num_brds()->::lh::Num_Brds::MergeFrom(from.num_brds());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -2748,9 +2745,9 @@ Response::Response()
 }
 
 void Response::InitAsDefaultInstance() {
-  error_ = const_cast< ::lighthouse::Error*>(&::lighthouse::Error::default_instance());
-  connect_resp_ = const_cast< ::lighthouse::Connect_Resp*>(&::lighthouse::Connect_Resp::default_instance());
-  num_brds_resp_ = const_cast< ::lighthouse::Num_Brds_Resp*>(&::lighthouse::Num_Brds_Resp::default_instance());
+  error_ = const_cast< ::lh::Error*>(&::lh::Error::default_instance());
+  connect_resp_ = const_cast< ::lh::Connect_Resp*>(&::lh::Connect_Resp::default_instance());
+  num_brds_resp_ = const_cast< ::lh::Num_Brds_Resp*>(&::lh::Num_Brds_Resp::default_instance());
 }
 
 Response::Response(const Response& from)
@@ -2804,13 +2801,13 @@ void Response::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     cmd_ = 1;
     if (has_error()) {
-      if (error_ != NULL) error_->::lighthouse::Error::Clear();
+      if (error_ != NULL) error_->::lh::Error::Clear();
     }
     if (has_connect_resp()) {
-      if (connect_resp_ != NULL) connect_resp_->::lighthouse::Connect_Resp::Clear();
+      if (connect_resp_ != NULL) connect_resp_->::lh::Connect_Resp::Clear();
     }
     if (has_num_brds_resp()) {
-      if (num_brds_resp_ != NULL) num_brds_resp_->::lighthouse::Num_Brds_Resp::Clear();
+      if (num_brds_resp_ != NULL) num_brds_resp_->::lh::Num_Brds_Resp::Clear();
     }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -2823,7 +2820,7 @@ bool Response::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required .lighthouse.Command.Commands cmd = 1;
+      // required .lh.Command.Commands cmd = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -2831,8 +2828,8 @@ bool Response::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
                  input, &value)));
-          if (::lighthouse::Command_Commands_IsValid(value)) {
-            set_cmd(static_cast< ::lighthouse::Command_Commands >(value));
+          if (::lh::Command_Commands_IsValid(value)) {
+            set_cmd(static_cast< ::lh::Command_Commands >(value));
           } else {
             mutable_unknown_fields()->AddVarint(1, value);
           }
@@ -2843,7 +2840,7 @@ bool Response::MergePartialFromCodedStream(
         break;
       }
       
-      // optional .lighthouse.Error error = 2;
+      // optional .lh.Error error = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -2857,7 +2854,7 @@ bool Response::MergePartialFromCodedStream(
         break;
       }
       
-      // optional .lighthouse.Connect_Resp connect_resp = 3;
+      // optional .lh.Connect_Resp connect_resp = 3;
       case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -2871,7 +2868,7 @@ bool Response::MergePartialFromCodedStream(
         break;
       }
       
-      // optional .lighthouse.Num_Brds_Resp num_brds_resp = 4;
+      // optional .lh.Num_Brds_Resp num_brds_resp = 4;
       case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -2903,25 +2900,25 @@ bool Response::MergePartialFromCodedStream(
 
 void Response::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // required .lighthouse.Command.Commands cmd = 1;
+  // required .lh.Command.Commands cmd = 1;
   if (has_cmd()) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       1, this->cmd(), output);
   }
   
-  // optional .lighthouse.Error error = 2;
+  // optional .lh.Error error = 2;
   if (has_error()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       2, this->error(), output);
   }
   
-  // optional .lighthouse.Connect_Resp connect_resp = 3;
+  // optional .lh.Connect_Resp connect_resp = 3;
   if (has_connect_resp()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       3, this->connect_resp(), output);
   }
   
-  // optional .lighthouse.Num_Brds_Resp num_brds_resp = 4;
+  // optional .lh.Num_Brds_Resp num_brds_resp = 4;
   if (has_num_brds_resp()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       4, this->num_brds_resp(), output);
@@ -2935,27 +2932,27 @@ void Response::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* Response::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // required .lighthouse.Command.Commands cmd = 1;
+  // required .lh.Command.Commands cmd = 1;
   if (has_cmd()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       1, this->cmd(), target);
   }
   
-  // optional .lighthouse.Error error = 2;
+  // optional .lh.Error error = 2;
   if (has_error()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         2, this->error(), target);
   }
   
-  // optional .lighthouse.Connect_Resp connect_resp = 3;
+  // optional .lh.Connect_Resp connect_resp = 3;
   if (has_connect_resp()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         3, this->connect_resp(), target);
   }
   
-  // optional .lighthouse.Num_Brds_Resp num_brds_resp = 4;
+  // optional .lh.Num_Brds_Resp num_brds_resp = 4;
   if (has_num_brds_resp()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -2973,27 +2970,27 @@ int Response::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required .lighthouse.Command.Commands cmd = 1;
+    // required .lh.Command.Commands cmd = 1;
     if (has_cmd()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->cmd());
     }
     
-    // optional .lighthouse.Error error = 2;
+    // optional .lh.Error error = 2;
     if (has_error()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->error());
     }
     
-    // optional .lighthouse.Connect_Resp connect_resp = 3;
+    // optional .lh.Connect_Resp connect_resp = 3;
     if (has_connect_resp()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->connect_resp());
     }
     
-    // optional .lighthouse.Num_Brds_Resp num_brds_resp = 4;
+    // optional .lh.Num_Brds_Resp num_brds_resp = 4;
     if (has_num_brds_resp()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -3031,13 +3028,13 @@ void Response::MergeFrom(const Response& from) {
       set_cmd(from.cmd());
     }
     if (from.has_error()) {
-      mutable_error()->::lighthouse::Error::MergeFrom(from.error());
+      mutable_error()->::lh::Error::MergeFrom(from.error());
     }
     if (from.has_connect_resp()) {
-      mutable_connect_resp()->::lighthouse::Connect_Resp::MergeFrom(from.connect_resp());
+      mutable_connect_resp()->::lh::Connect_Resp::MergeFrom(from.connect_resp());
     }
     if (from.has_num_brds_resp()) {
-      mutable_num_brds_resp()->::lighthouse::Num_Brds_Resp::MergeFrom(from.num_brds_resp());
+      mutable_num_brds_resp()->::lh::Num_Brds_Resp::MergeFrom(from.num_brds_resp());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -3199,7 +3196,7 @@ bool Error::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required .lighthouse.Error.Errors error_type = 1;
+      // required .lh.Error.Errors error_type = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -3207,8 +3204,8 @@ bool Error::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
                  input, &value)));
-          if (::lighthouse::Error_Errors_IsValid(value)) {
-            set_error_type(static_cast< ::lighthouse::Error_Errors >(value));
+          if (::lh::Error_Errors_IsValid(value)) {
+            set_error_type(static_cast< ::lh::Error_Errors >(value));
           } else {
             mutable_unknown_fields()->AddVarint(1, value);
           }
@@ -3254,7 +3251,7 @@ bool Error::MergePartialFromCodedStream(
 
 void Error::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // required .lighthouse.Error.Errors error_type = 1;
+  // required .lh.Error.Errors error_type = 1;
   if (has_error_type()) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       1, this->error_type(), output);
@@ -3277,7 +3274,7 @@ void Error::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* Error::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // required .lighthouse.Error.Errors error_type = 1;
+  // required .lh.Error.Errors error_type = 1;
   if (has_error_type()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       1, this->error_type(), target);
@@ -3304,7 +3301,7 @@ int Error::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required .lighthouse.Error.Errors error_type = 1;
+    // required .lh.Error.Errors error_type = 1;
     if (has_error_type()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->error_type());
@@ -3826,6 +3823,6 @@ void Num_Brds_Resp::Swap(Num_Brds_Resp* other) {
 
 // @@protoc_insertion_point(namespace_scope)
 
-}  // namespace lighthouse
+}  // namespace lh
 
 // @@protoc_insertion_point(global_scope)

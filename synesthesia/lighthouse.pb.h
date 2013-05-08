@@ -25,7 +25,7 @@
 #include <google/protobuf/generated_message_reflection.h>
 // @@protoc_insertion_point(includes)
 
-namespace lighthouse {
+namespace lh {
 
 // Internal implementation detail -- do not call these.
 void  protobuf_AddDesc_lighthouse_2eproto();
@@ -183,86 +183,86 @@ class Command : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // required .lighthouse.Command.Commands cmd_type = 1;
+  // required .lh.Command.Commands cmd_type = 1;
   inline bool has_cmd_type() const;
   inline void clear_cmd_type();
   static const int kCmdTypeFieldNumber = 1;
-  inline ::lighthouse::Command_Commands cmd_type() const;
-  inline void set_cmd_type(::lighthouse::Command_Commands value);
+  inline ::lh::Command_Commands cmd_type() const;
+  inline void set_cmd_type(::lh::Command_Commands value);
   
-  // optional .lighthouse.Connect connect = 2;
+  // optional .lh.Connect connect = 2;
   inline bool has_connect() const;
   inline void clear_connect();
   static const int kConnectFieldNumber = 2;
-  inline const ::lighthouse::Connect& connect() const;
-  inline ::lighthouse::Connect* mutable_connect();
-  inline ::lighthouse::Connect* release_connect();
+  inline const ::lh::Connect& connect() const;
+  inline ::lh::Connect* mutable_connect();
+  inline ::lh::Connect* release_connect();
   
-  // optional .lighthouse.Disconnect disconnect = 3;
+  // optional .lh.Disconnect disconnect = 3;
   inline bool has_disconnect() const;
   inline void clear_disconnect();
   static const int kDisconnectFieldNumber = 3;
-  inline const ::lighthouse::Disconnect& disconnect() const;
-  inline ::lighthouse::Disconnect* mutable_disconnect();
-  inline ::lighthouse::Disconnect* release_disconnect();
+  inline const ::lh::Disconnect& disconnect() const;
+  inline ::lh::Disconnect* mutable_disconnect();
+  inline ::lh::Disconnect* release_disconnect();
   
-  // optional .lighthouse.Hello hello = 4;
+  // optional .lh.Hello hello = 4;
   inline bool has_hello() const;
   inline void clear_hello();
   static const int kHelloFieldNumber = 4;
-  inline const ::lighthouse::Hello& hello() const;
-  inline ::lighthouse::Hello* mutable_hello();
-  inline ::lighthouse::Hello* release_hello();
+  inline const ::lh::Hello& hello() const;
+  inline ::lh::Hello* mutable_hello();
+  inline ::lh::Hello* release_hello();
   
-  // optional .lighthouse.En_LED en_led = 5;
+  // optional .lh.En_LED en_led = 5;
   inline bool has_en_led() const;
   inline void clear_en_led();
   static const int kEnLedFieldNumber = 5;
-  inline const ::lighthouse::En_LED& en_led() const;
-  inline ::lighthouse::En_LED* mutable_en_led();
-  inline ::lighthouse::En_LED* release_en_led();
+  inline const ::lh::En_LED& en_led() const;
+  inline ::lh::En_LED* mutable_en_led();
+  inline ::lh::En_LED* release_en_led();
   
-  // optional .lighthouse.Dis_LED dis_led = 6;
+  // optional .lh.Dis_LED dis_led = 6;
   inline bool has_dis_led() const;
   inline void clear_dis_led();
   static const int kDisLedFieldNumber = 6;
-  inline const ::lighthouse::Dis_LED& dis_led() const;
-  inline ::lighthouse::Dis_LED* mutable_dis_led();
-  inline ::lighthouse::Dis_LED* release_dis_led();
+  inline const ::lh::Dis_LED& dis_led() const;
+  inline ::lh::Dis_LED* mutable_dis_led();
+  inline ::lh::Dis_LED* release_dis_led();
   
-  // optional .lighthouse.Set_DC set_dc = 7;
+  // optional .lh.Set_DC set_dc = 7;
   inline bool has_set_dc() const;
   inline void clear_set_dc();
   static const int kSetDcFieldNumber = 7;
-  inline const ::lighthouse::Set_DC& set_dc() const;
-  inline ::lighthouse::Set_DC* mutable_set_dc();
-  inline ::lighthouse::Set_DC* release_set_dc();
+  inline const ::lh::Set_DC& set_dc() const;
+  inline ::lh::Set_DC* mutable_set_dc();
+  inline ::lh::Set_DC* release_set_dc();
   
-  // optional .lighthouse.Send_Data send_data = 8;
+  // optional .lh.Send_Data send_data = 8;
   inline bool has_send_data() const;
   inline void clear_send_data();
   static const int kSendDataFieldNumber = 8;
-  inline const ::lighthouse::Send_Data& send_data() const;
-  inline ::lighthouse::Send_Data* mutable_send_data();
-  inline ::lighthouse::Send_Data* release_send_data();
+  inline const ::lh::Send_Data& send_data() const;
+  inline ::lh::Send_Data* mutable_send_data();
+  inline ::lh::Send_Data* release_send_data();
   
-  // optional .lighthouse.Lat_Data lat_data = 9;
+  // optional .lh.Lat_Data lat_data = 9;
   inline bool has_lat_data() const;
   inline void clear_lat_data();
   static const int kLatDataFieldNumber = 9;
-  inline const ::lighthouse::Lat_Data& lat_data() const;
-  inline ::lighthouse::Lat_Data* mutable_lat_data();
-  inline ::lighthouse::Lat_Data* release_lat_data();
+  inline const ::lh::Lat_Data& lat_data() const;
+  inline ::lh::Lat_Data* mutable_lat_data();
+  inline ::lh::Lat_Data* release_lat_data();
   
-  // optional .lighthouse.Num_Brds num_brds = 10;
+  // optional .lh.Num_Brds num_brds = 10;
   inline bool has_num_brds() const;
   inline void clear_num_brds();
   static const int kNumBrdsFieldNumber = 10;
-  inline const ::lighthouse::Num_Brds& num_brds() const;
-  inline ::lighthouse::Num_Brds* mutable_num_brds();
-  inline ::lighthouse::Num_Brds* release_num_brds();
+  inline const ::lh::Num_Brds& num_brds() const;
+  inline ::lh::Num_Brds* mutable_num_brds();
+  inline ::lh::Num_Brds* release_num_brds();
   
-  // @@protoc_insertion_point(class_scope:lighthouse.Command)
+  // @@protoc_insertion_point(class_scope:lh.Command)
  private:
   inline void set_has_cmd_type();
   inline void clear_has_cmd_type();
@@ -287,15 +287,15 @@ class Command : public ::google::protobuf::Message {
   
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   
-  ::lighthouse::Connect* connect_;
-  ::lighthouse::Disconnect* disconnect_;
-  ::lighthouse::Hello* hello_;
-  ::lighthouse::En_LED* en_led_;
-  ::lighthouse::Dis_LED* dis_led_;
-  ::lighthouse::Set_DC* set_dc_;
-  ::lighthouse::Send_Data* send_data_;
-  ::lighthouse::Lat_Data* lat_data_;
-  ::lighthouse::Num_Brds* num_brds_;
+  ::lh::Connect* connect_;
+  ::lh::Disconnect* disconnect_;
+  ::lh::Hello* hello_;
+  ::lh::En_LED* en_led_;
+  ::lh::Dis_LED* dis_led_;
+  ::lh::Set_DC* set_dc_;
+  ::lh::Send_Data* send_data_;
+  ::lh::Lat_Data* lat_data_;
+  ::lh::Num_Brds* num_brds_;
   int cmd_type_;
   
   mutable int _cached_size_;
@@ -375,7 +375,7 @@ class Connect : public ::google::protobuf::Message {
   inline ::std::string* mutable_port();
   inline ::std::string* release_port();
   
-  // @@protoc_insertion_point(class_scope:lighthouse.Connect)
+  // @@protoc_insertion_point(class_scope:lh.Connect)
  private:
   inline void set_has_port();
   inline void clear_has_port();
@@ -450,7 +450,7 @@ class Disconnect : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // @@protoc_insertion_point(class_scope:lighthouse.Disconnect)
+  // @@protoc_insertion_point(class_scope:lh.Disconnect)
  private:
   
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -522,7 +522,7 @@ class Hello : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // @@protoc_insertion_point(class_scope:lighthouse.Hello)
+  // @@protoc_insertion_point(class_scope:lh.Hello)
  private:
   
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -594,7 +594,7 @@ class En_LED : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // @@protoc_insertion_point(class_scope:lighthouse.En_LED)
+  // @@protoc_insertion_point(class_scope:lh.En_LED)
  private:
   
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -666,7 +666,7 @@ class Dis_LED : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // @@protoc_insertion_point(class_scope:lighthouse.Dis_LED)
+  // @@protoc_insertion_point(class_scope:lh.Dis_LED)
  private:
   
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -752,7 +752,7 @@ class Set_DC : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 num_brds() const;
   inline void set_num_brds(::google::protobuf::uint32 value);
   
-  // @@protoc_insertion_point(class_scope:lighthouse.Set_DC)
+  // @@protoc_insertion_point(class_scope:lh.Set_DC)
  private:
   inline void set_has_level();
   inline void clear_has_level();
@@ -842,7 +842,7 @@ class Send_Data : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
       mutable_data();
   
-  // @@protoc_insertion_point(class_scope:lighthouse.Send_Data)
+  // @@protoc_insertion_point(class_scope:lh.Send_Data)
  private:
   
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -916,7 +916,7 @@ class Lat_Data : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // @@protoc_insertion_point(class_scope:lighthouse.Lat_Data)
+  // @@protoc_insertion_point(class_scope:lh.Lat_Data)
  private:
   
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -988,7 +988,7 @@ class Num_Brds : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // @@protoc_insertion_point(class_scope:lighthouse.Num_Brds)
+  // @@protoc_insertion_point(class_scope:lh.Num_Brds)
  private:
   
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -1060,38 +1060,38 @@ class Response : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // required .lighthouse.Command.Commands cmd = 1;
+  // required .lh.Command.Commands cmd = 1;
   inline bool has_cmd() const;
   inline void clear_cmd();
   static const int kCmdFieldNumber = 1;
-  inline ::lighthouse::Command_Commands cmd() const;
-  inline void set_cmd(::lighthouse::Command_Commands value);
+  inline ::lh::Command_Commands cmd() const;
+  inline void set_cmd(::lh::Command_Commands value);
   
-  // optional .lighthouse.Error error = 2;
+  // optional .lh.Error error = 2;
   inline bool has_error() const;
   inline void clear_error();
   static const int kErrorFieldNumber = 2;
-  inline const ::lighthouse::Error& error() const;
-  inline ::lighthouse::Error* mutable_error();
-  inline ::lighthouse::Error* release_error();
+  inline const ::lh::Error& error() const;
+  inline ::lh::Error* mutable_error();
+  inline ::lh::Error* release_error();
   
-  // optional .lighthouse.Connect_Resp connect_resp = 3;
+  // optional .lh.Connect_Resp connect_resp = 3;
   inline bool has_connect_resp() const;
   inline void clear_connect_resp();
   static const int kConnectRespFieldNumber = 3;
-  inline const ::lighthouse::Connect_Resp& connect_resp() const;
-  inline ::lighthouse::Connect_Resp* mutable_connect_resp();
-  inline ::lighthouse::Connect_Resp* release_connect_resp();
+  inline const ::lh::Connect_Resp& connect_resp() const;
+  inline ::lh::Connect_Resp* mutable_connect_resp();
+  inline ::lh::Connect_Resp* release_connect_resp();
   
-  // optional .lighthouse.Num_Brds_Resp num_brds_resp = 4;
+  // optional .lh.Num_Brds_Resp num_brds_resp = 4;
   inline bool has_num_brds_resp() const;
   inline void clear_num_brds_resp();
   static const int kNumBrdsRespFieldNumber = 4;
-  inline const ::lighthouse::Num_Brds_Resp& num_brds_resp() const;
-  inline ::lighthouse::Num_Brds_Resp* mutable_num_brds_resp();
-  inline ::lighthouse::Num_Brds_Resp* release_num_brds_resp();
+  inline const ::lh::Num_Brds_Resp& num_brds_resp() const;
+  inline ::lh::Num_Brds_Resp* mutable_num_brds_resp();
+  inline ::lh::Num_Brds_Resp* release_num_brds_resp();
   
-  // @@protoc_insertion_point(class_scope:lighthouse.Response)
+  // @@protoc_insertion_point(class_scope:lh.Response)
  private:
   inline void set_has_cmd();
   inline void clear_has_cmd();
@@ -1104,9 +1104,9 @@ class Response : public ::google::protobuf::Message {
   
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   
-  ::lighthouse::Error* error_;
-  ::lighthouse::Connect_Resp* connect_resp_;
-  ::lighthouse::Num_Brds_Resp* num_brds_resp_;
+  ::lh::Error* error_;
+  ::lh::Connect_Resp* connect_resp_;
+  ::lh::Num_Brds_Resp* num_brds_resp_;
   int cmd_;
   
   mutable int _cached_size_;
@@ -1203,12 +1203,12 @@ class Error : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // required .lighthouse.Error.Errors error_type = 1;
+  // required .lh.Error.Errors error_type = 1;
   inline bool has_error_type() const;
   inline void clear_error_type();
   static const int kErrorTypeFieldNumber = 1;
-  inline ::lighthouse::Error_Errors error_type() const;
-  inline void set_error_type(::lighthouse::Error_Errors value);
+  inline ::lh::Error_Errors error_type() const;
+  inline void set_error_type(::lh::Error_Errors value);
   
   // optional string string = 2;
   inline bool has_string() const;
@@ -1221,7 +1221,7 @@ class Error : public ::google::protobuf::Message {
   inline ::std::string* mutable_string();
   inline ::std::string* release_string();
   
-  // @@protoc_insertion_point(class_scope:lighthouse.Error)
+  // @@protoc_insertion_point(class_scope:lh.Error)
  private:
   inline void set_has_error_type();
   inline void clear_has_error_type();
@@ -1310,7 +1310,7 @@ class Connect_Resp : public ::google::protobuf::Message {
   inline ::std::string* mutable_port();
   inline ::std::string* release_port();
   
-  // @@protoc_insertion_point(class_scope:lighthouse.Connect_Resp)
+  // @@protoc_insertion_point(class_scope:lh.Connect_Resp)
  private:
   inline void set_has_port();
   inline void clear_has_port();
@@ -1392,7 +1392,7 @@ class Num_Brds_Resp : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 num_brds() const;
   inline void set_num_brds(::google::protobuf::uint32 value);
   
-  // @@protoc_insertion_point(class_scope:lighthouse.Num_Brds_Resp)
+  // @@protoc_insertion_point(class_scope:lh.Num_Brds_Resp)
  private:
   inline void set_has_num_brds();
   inline void clear_has_num_brds();
@@ -1418,7 +1418,7 @@ class Num_Brds_Resp : public ::google::protobuf::Message {
 
 // Command
 
-// required .lighthouse.Command.Commands cmd_type = 1;
+// required .lh.Command.Commands cmd_type = 1;
 inline bool Command::has_cmd_type() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -1432,16 +1432,16 @@ inline void Command::clear_cmd_type() {
   cmd_type_ = 1;
   clear_has_cmd_type();
 }
-inline ::lighthouse::Command_Commands Command::cmd_type() const {
-  return static_cast< ::lighthouse::Command_Commands >(cmd_type_);
+inline ::lh::Command_Commands Command::cmd_type() const {
+  return static_cast< ::lh::Command_Commands >(cmd_type_);
 }
-inline void Command::set_cmd_type(::lighthouse::Command_Commands value) {
-  GOOGLE_DCHECK(::lighthouse::Command_Commands_IsValid(value));
+inline void Command::set_cmd_type(::lh::Command_Commands value) {
+  GOOGLE_DCHECK(::lh::Command_Commands_IsValid(value));
   set_has_cmd_type();
   cmd_type_ = value;
 }
 
-// optional .lighthouse.Connect connect = 2;
+// optional .lh.Connect connect = 2;
 inline bool Command::has_connect() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -1452,25 +1452,25 @@ inline void Command::clear_has_connect() {
   _has_bits_[0] &= ~0x00000002u;
 }
 inline void Command::clear_connect() {
-  if (connect_ != NULL) connect_->::lighthouse::Connect::Clear();
+  if (connect_ != NULL) connect_->::lh::Connect::Clear();
   clear_has_connect();
 }
-inline const ::lighthouse::Connect& Command::connect() const {
+inline const ::lh::Connect& Command::connect() const {
   return connect_ != NULL ? *connect_ : *default_instance_->connect_;
 }
-inline ::lighthouse::Connect* Command::mutable_connect() {
+inline ::lh::Connect* Command::mutable_connect() {
   set_has_connect();
-  if (connect_ == NULL) connect_ = new ::lighthouse::Connect;
+  if (connect_ == NULL) connect_ = new ::lh::Connect;
   return connect_;
 }
-inline ::lighthouse::Connect* Command::release_connect() {
+inline ::lh::Connect* Command::release_connect() {
   clear_has_connect();
-  ::lighthouse::Connect* temp = connect_;
+  ::lh::Connect* temp = connect_;
   connect_ = NULL;
   return temp;
 }
 
-// optional .lighthouse.Disconnect disconnect = 3;
+// optional .lh.Disconnect disconnect = 3;
 inline bool Command::has_disconnect() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -1481,25 +1481,25 @@ inline void Command::clear_has_disconnect() {
   _has_bits_[0] &= ~0x00000004u;
 }
 inline void Command::clear_disconnect() {
-  if (disconnect_ != NULL) disconnect_->::lighthouse::Disconnect::Clear();
+  if (disconnect_ != NULL) disconnect_->::lh::Disconnect::Clear();
   clear_has_disconnect();
 }
-inline const ::lighthouse::Disconnect& Command::disconnect() const {
+inline const ::lh::Disconnect& Command::disconnect() const {
   return disconnect_ != NULL ? *disconnect_ : *default_instance_->disconnect_;
 }
-inline ::lighthouse::Disconnect* Command::mutable_disconnect() {
+inline ::lh::Disconnect* Command::mutable_disconnect() {
   set_has_disconnect();
-  if (disconnect_ == NULL) disconnect_ = new ::lighthouse::Disconnect;
+  if (disconnect_ == NULL) disconnect_ = new ::lh::Disconnect;
   return disconnect_;
 }
-inline ::lighthouse::Disconnect* Command::release_disconnect() {
+inline ::lh::Disconnect* Command::release_disconnect() {
   clear_has_disconnect();
-  ::lighthouse::Disconnect* temp = disconnect_;
+  ::lh::Disconnect* temp = disconnect_;
   disconnect_ = NULL;
   return temp;
 }
 
-// optional .lighthouse.Hello hello = 4;
+// optional .lh.Hello hello = 4;
 inline bool Command::has_hello() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
@@ -1510,25 +1510,25 @@ inline void Command::clear_has_hello() {
   _has_bits_[0] &= ~0x00000008u;
 }
 inline void Command::clear_hello() {
-  if (hello_ != NULL) hello_->::lighthouse::Hello::Clear();
+  if (hello_ != NULL) hello_->::lh::Hello::Clear();
   clear_has_hello();
 }
-inline const ::lighthouse::Hello& Command::hello() const {
+inline const ::lh::Hello& Command::hello() const {
   return hello_ != NULL ? *hello_ : *default_instance_->hello_;
 }
-inline ::lighthouse::Hello* Command::mutable_hello() {
+inline ::lh::Hello* Command::mutable_hello() {
   set_has_hello();
-  if (hello_ == NULL) hello_ = new ::lighthouse::Hello;
+  if (hello_ == NULL) hello_ = new ::lh::Hello;
   return hello_;
 }
-inline ::lighthouse::Hello* Command::release_hello() {
+inline ::lh::Hello* Command::release_hello() {
   clear_has_hello();
-  ::lighthouse::Hello* temp = hello_;
+  ::lh::Hello* temp = hello_;
   hello_ = NULL;
   return temp;
 }
 
-// optional .lighthouse.En_LED en_led = 5;
+// optional .lh.En_LED en_led = 5;
 inline bool Command::has_en_led() const {
   return (_has_bits_[0] & 0x00000010u) != 0;
 }
@@ -1539,25 +1539,25 @@ inline void Command::clear_has_en_led() {
   _has_bits_[0] &= ~0x00000010u;
 }
 inline void Command::clear_en_led() {
-  if (en_led_ != NULL) en_led_->::lighthouse::En_LED::Clear();
+  if (en_led_ != NULL) en_led_->::lh::En_LED::Clear();
   clear_has_en_led();
 }
-inline const ::lighthouse::En_LED& Command::en_led() const {
+inline const ::lh::En_LED& Command::en_led() const {
   return en_led_ != NULL ? *en_led_ : *default_instance_->en_led_;
 }
-inline ::lighthouse::En_LED* Command::mutable_en_led() {
+inline ::lh::En_LED* Command::mutable_en_led() {
   set_has_en_led();
-  if (en_led_ == NULL) en_led_ = new ::lighthouse::En_LED;
+  if (en_led_ == NULL) en_led_ = new ::lh::En_LED;
   return en_led_;
 }
-inline ::lighthouse::En_LED* Command::release_en_led() {
+inline ::lh::En_LED* Command::release_en_led() {
   clear_has_en_led();
-  ::lighthouse::En_LED* temp = en_led_;
+  ::lh::En_LED* temp = en_led_;
   en_led_ = NULL;
   return temp;
 }
 
-// optional .lighthouse.Dis_LED dis_led = 6;
+// optional .lh.Dis_LED dis_led = 6;
 inline bool Command::has_dis_led() const {
   return (_has_bits_[0] & 0x00000020u) != 0;
 }
@@ -1568,25 +1568,25 @@ inline void Command::clear_has_dis_led() {
   _has_bits_[0] &= ~0x00000020u;
 }
 inline void Command::clear_dis_led() {
-  if (dis_led_ != NULL) dis_led_->::lighthouse::Dis_LED::Clear();
+  if (dis_led_ != NULL) dis_led_->::lh::Dis_LED::Clear();
   clear_has_dis_led();
 }
-inline const ::lighthouse::Dis_LED& Command::dis_led() const {
+inline const ::lh::Dis_LED& Command::dis_led() const {
   return dis_led_ != NULL ? *dis_led_ : *default_instance_->dis_led_;
 }
-inline ::lighthouse::Dis_LED* Command::mutable_dis_led() {
+inline ::lh::Dis_LED* Command::mutable_dis_led() {
   set_has_dis_led();
-  if (dis_led_ == NULL) dis_led_ = new ::lighthouse::Dis_LED;
+  if (dis_led_ == NULL) dis_led_ = new ::lh::Dis_LED;
   return dis_led_;
 }
-inline ::lighthouse::Dis_LED* Command::release_dis_led() {
+inline ::lh::Dis_LED* Command::release_dis_led() {
   clear_has_dis_led();
-  ::lighthouse::Dis_LED* temp = dis_led_;
+  ::lh::Dis_LED* temp = dis_led_;
   dis_led_ = NULL;
   return temp;
 }
 
-// optional .lighthouse.Set_DC set_dc = 7;
+// optional .lh.Set_DC set_dc = 7;
 inline bool Command::has_set_dc() const {
   return (_has_bits_[0] & 0x00000040u) != 0;
 }
@@ -1597,25 +1597,25 @@ inline void Command::clear_has_set_dc() {
   _has_bits_[0] &= ~0x00000040u;
 }
 inline void Command::clear_set_dc() {
-  if (set_dc_ != NULL) set_dc_->::lighthouse::Set_DC::Clear();
+  if (set_dc_ != NULL) set_dc_->::lh::Set_DC::Clear();
   clear_has_set_dc();
 }
-inline const ::lighthouse::Set_DC& Command::set_dc() const {
+inline const ::lh::Set_DC& Command::set_dc() const {
   return set_dc_ != NULL ? *set_dc_ : *default_instance_->set_dc_;
 }
-inline ::lighthouse::Set_DC* Command::mutable_set_dc() {
+inline ::lh::Set_DC* Command::mutable_set_dc() {
   set_has_set_dc();
-  if (set_dc_ == NULL) set_dc_ = new ::lighthouse::Set_DC;
+  if (set_dc_ == NULL) set_dc_ = new ::lh::Set_DC;
   return set_dc_;
 }
-inline ::lighthouse::Set_DC* Command::release_set_dc() {
+inline ::lh::Set_DC* Command::release_set_dc() {
   clear_has_set_dc();
-  ::lighthouse::Set_DC* temp = set_dc_;
+  ::lh::Set_DC* temp = set_dc_;
   set_dc_ = NULL;
   return temp;
 }
 
-// optional .lighthouse.Send_Data send_data = 8;
+// optional .lh.Send_Data send_data = 8;
 inline bool Command::has_send_data() const {
   return (_has_bits_[0] & 0x00000080u) != 0;
 }
@@ -1626,25 +1626,25 @@ inline void Command::clear_has_send_data() {
   _has_bits_[0] &= ~0x00000080u;
 }
 inline void Command::clear_send_data() {
-  if (send_data_ != NULL) send_data_->::lighthouse::Send_Data::Clear();
+  if (send_data_ != NULL) send_data_->::lh::Send_Data::Clear();
   clear_has_send_data();
 }
-inline const ::lighthouse::Send_Data& Command::send_data() const {
+inline const ::lh::Send_Data& Command::send_data() const {
   return send_data_ != NULL ? *send_data_ : *default_instance_->send_data_;
 }
-inline ::lighthouse::Send_Data* Command::mutable_send_data() {
+inline ::lh::Send_Data* Command::mutable_send_data() {
   set_has_send_data();
-  if (send_data_ == NULL) send_data_ = new ::lighthouse::Send_Data;
+  if (send_data_ == NULL) send_data_ = new ::lh::Send_Data;
   return send_data_;
 }
-inline ::lighthouse::Send_Data* Command::release_send_data() {
+inline ::lh::Send_Data* Command::release_send_data() {
   clear_has_send_data();
-  ::lighthouse::Send_Data* temp = send_data_;
+  ::lh::Send_Data* temp = send_data_;
   send_data_ = NULL;
   return temp;
 }
 
-// optional .lighthouse.Lat_Data lat_data = 9;
+// optional .lh.Lat_Data lat_data = 9;
 inline bool Command::has_lat_data() const {
   return (_has_bits_[0] & 0x00000100u) != 0;
 }
@@ -1655,25 +1655,25 @@ inline void Command::clear_has_lat_data() {
   _has_bits_[0] &= ~0x00000100u;
 }
 inline void Command::clear_lat_data() {
-  if (lat_data_ != NULL) lat_data_->::lighthouse::Lat_Data::Clear();
+  if (lat_data_ != NULL) lat_data_->::lh::Lat_Data::Clear();
   clear_has_lat_data();
 }
-inline const ::lighthouse::Lat_Data& Command::lat_data() const {
+inline const ::lh::Lat_Data& Command::lat_data() const {
   return lat_data_ != NULL ? *lat_data_ : *default_instance_->lat_data_;
 }
-inline ::lighthouse::Lat_Data* Command::mutable_lat_data() {
+inline ::lh::Lat_Data* Command::mutable_lat_data() {
   set_has_lat_data();
-  if (lat_data_ == NULL) lat_data_ = new ::lighthouse::Lat_Data;
+  if (lat_data_ == NULL) lat_data_ = new ::lh::Lat_Data;
   return lat_data_;
 }
-inline ::lighthouse::Lat_Data* Command::release_lat_data() {
+inline ::lh::Lat_Data* Command::release_lat_data() {
   clear_has_lat_data();
-  ::lighthouse::Lat_Data* temp = lat_data_;
+  ::lh::Lat_Data* temp = lat_data_;
   lat_data_ = NULL;
   return temp;
 }
 
-// optional .lighthouse.Num_Brds num_brds = 10;
+// optional .lh.Num_Brds num_brds = 10;
 inline bool Command::has_num_brds() const {
   return (_has_bits_[0] & 0x00000200u) != 0;
 }
@@ -1684,20 +1684,20 @@ inline void Command::clear_has_num_brds() {
   _has_bits_[0] &= ~0x00000200u;
 }
 inline void Command::clear_num_brds() {
-  if (num_brds_ != NULL) num_brds_->::lighthouse::Num_Brds::Clear();
+  if (num_brds_ != NULL) num_brds_->::lh::Num_Brds::Clear();
   clear_has_num_brds();
 }
-inline const ::lighthouse::Num_Brds& Command::num_brds() const {
+inline const ::lh::Num_Brds& Command::num_brds() const {
   return num_brds_ != NULL ? *num_brds_ : *default_instance_->num_brds_;
 }
-inline ::lighthouse::Num_Brds* Command::mutable_num_brds() {
+inline ::lh::Num_Brds* Command::mutable_num_brds() {
   set_has_num_brds();
-  if (num_brds_ == NULL) num_brds_ = new ::lighthouse::Num_Brds;
+  if (num_brds_ == NULL) num_brds_ = new ::lh::Num_Brds;
   return num_brds_;
 }
-inline ::lighthouse::Num_Brds* Command::release_num_brds() {
+inline ::lh::Num_Brds* Command::release_num_brds() {
   clear_has_num_brds();
-  ::lighthouse::Num_Brds* temp = num_brds_;
+  ::lh::Num_Brds* temp = num_brds_;
   num_brds_ = NULL;
   return temp;
 }
@@ -1869,7 +1869,7 @@ Send_Data::mutable_data() {
 
 // Response
 
-// required .lighthouse.Command.Commands cmd = 1;
+// required .lh.Command.Commands cmd = 1;
 inline bool Response::has_cmd() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -1883,16 +1883,16 @@ inline void Response::clear_cmd() {
   cmd_ = 1;
   clear_has_cmd();
 }
-inline ::lighthouse::Command_Commands Response::cmd() const {
-  return static_cast< ::lighthouse::Command_Commands >(cmd_);
+inline ::lh::Command_Commands Response::cmd() const {
+  return static_cast< ::lh::Command_Commands >(cmd_);
 }
-inline void Response::set_cmd(::lighthouse::Command_Commands value) {
-  GOOGLE_DCHECK(::lighthouse::Command_Commands_IsValid(value));
+inline void Response::set_cmd(::lh::Command_Commands value) {
+  GOOGLE_DCHECK(::lh::Command_Commands_IsValid(value));
   set_has_cmd();
   cmd_ = value;
 }
 
-// optional .lighthouse.Error error = 2;
+// optional .lh.Error error = 2;
 inline bool Response::has_error() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -1903,25 +1903,25 @@ inline void Response::clear_has_error() {
   _has_bits_[0] &= ~0x00000002u;
 }
 inline void Response::clear_error() {
-  if (error_ != NULL) error_->::lighthouse::Error::Clear();
+  if (error_ != NULL) error_->::lh::Error::Clear();
   clear_has_error();
 }
-inline const ::lighthouse::Error& Response::error() const {
+inline const ::lh::Error& Response::error() const {
   return error_ != NULL ? *error_ : *default_instance_->error_;
 }
-inline ::lighthouse::Error* Response::mutable_error() {
+inline ::lh::Error* Response::mutable_error() {
   set_has_error();
-  if (error_ == NULL) error_ = new ::lighthouse::Error;
+  if (error_ == NULL) error_ = new ::lh::Error;
   return error_;
 }
-inline ::lighthouse::Error* Response::release_error() {
+inline ::lh::Error* Response::release_error() {
   clear_has_error();
-  ::lighthouse::Error* temp = error_;
+  ::lh::Error* temp = error_;
   error_ = NULL;
   return temp;
 }
 
-// optional .lighthouse.Connect_Resp connect_resp = 3;
+// optional .lh.Connect_Resp connect_resp = 3;
 inline bool Response::has_connect_resp() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -1932,25 +1932,25 @@ inline void Response::clear_has_connect_resp() {
   _has_bits_[0] &= ~0x00000004u;
 }
 inline void Response::clear_connect_resp() {
-  if (connect_resp_ != NULL) connect_resp_->::lighthouse::Connect_Resp::Clear();
+  if (connect_resp_ != NULL) connect_resp_->::lh::Connect_Resp::Clear();
   clear_has_connect_resp();
 }
-inline const ::lighthouse::Connect_Resp& Response::connect_resp() const {
+inline const ::lh::Connect_Resp& Response::connect_resp() const {
   return connect_resp_ != NULL ? *connect_resp_ : *default_instance_->connect_resp_;
 }
-inline ::lighthouse::Connect_Resp* Response::mutable_connect_resp() {
+inline ::lh::Connect_Resp* Response::mutable_connect_resp() {
   set_has_connect_resp();
-  if (connect_resp_ == NULL) connect_resp_ = new ::lighthouse::Connect_Resp;
+  if (connect_resp_ == NULL) connect_resp_ = new ::lh::Connect_Resp;
   return connect_resp_;
 }
-inline ::lighthouse::Connect_Resp* Response::release_connect_resp() {
+inline ::lh::Connect_Resp* Response::release_connect_resp() {
   clear_has_connect_resp();
-  ::lighthouse::Connect_Resp* temp = connect_resp_;
+  ::lh::Connect_Resp* temp = connect_resp_;
   connect_resp_ = NULL;
   return temp;
 }
 
-// optional .lighthouse.Num_Brds_Resp num_brds_resp = 4;
+// optional .lh.Num_Brds_Resp num_brds_resp = 4;
 inline bool Response::has_num_brds_resp() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
@@ -1961,20 +1961,20 @@ inline void Response::clear_has_num_brds_resp() {
   _has_bits_[0] &= ~0x00000008u;
 }
 inline void Response::clear_num_brds_resp() {
-  if (num_brds_resp_ != NULL) num_brds_resp_->::lighthouse::Num_Brds_Resp::Clear();
+  if (num_brds_resp_ != NULL) num_brds_resp_->::lh::Num_Brds_Resp::Clear();
   clear_has_num_brds_resp();
 }
-inline const ::lighthouse::Num_Brds_Resp& Response::num_brds_resp() const {
+inline const ::lh::Num_Brds_Resp& Response::num_brds_resp() const {
   return num_brds_resp_ != NULL ? *num_brds_resp_ : *default_instance_->num_brds_resp_;
 }
-inline ::lighthouse::Num_Brds_Resp* Response::mutable_num_brds_resp() {
+inline ::lh::Num_Brds_Resp* Response::mutable_num_brds_resp() {
   set_has_num_brds_resp();
-  if (num_brds_resp_ == NULL) num_brds_resp_ = new ::lighthouse::Num_Brds_Resp;
+  if (num_brds_resp_ == NULL) num_brds_resp_ = new ::lh::Num_Brds_Resp;
   return num_brds_resp_;
 }
-inline ::lighthouse::Num_Brds_Resp* Response::release_num_brds_resp() {
+inline ::lh::Num_Brds_Resp* Response::release_num_brds_resp() {
   clear_has_num_brds_resp();
-  ::lighthouse::Num_Brds_Resp* temp = num_brds_resp_;
+  ::lh::Num_Brds_Resp* temp = num_brds_resp_;
   num_brds_resp_ = NULL;
   return temp;
 }
@@ -1983,7 +1983,7 @@ inline ::lighthouse::Num_Brds_Resp* Response::release_num_brds_resp() {
 
 // Error
 
-// required .lighthouse.Error.Errors error_type = 1;
+// required .lh.Error.Errors error_type = 1;
 inline bool Error::has_error_type() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -1997,11 +1997,11 @@ inline void Error::clear_error_type() {
   error_type_ = 1;
   clear_has_error_type();
 }
-inline ::lighthouse::Error_Errors Error::error_type() const {
-  return static_cast< ::lighthouse::Error_Errors >(error_type_);
+inline ::lh::Error_Errors Error::error_type() const {
+  return static_cast< ::lh::Error_Errors >(error_type_);
 }
-inline void Error::set_error_type(::lighthouse::Error_Errors value) {
-  GOOGLE_DCHECK(::lighthouse::Error_Errors_IsValid(value));
+inline void Error::set_error_type(::lh::Error_Errors value) {
+  GOOGLE_DCHECK(::lh::Error_Errors_IsValid(value));
   set_has_error_type();
   error_type_ = value;
 }
@@ -2155,19 +2155,19 @@ inline void Num_Brds_Resp::set_num_brds(::google::protobuf::uint32 value) {
 
 // @@protoc_insertion_point(namespace_scope)
 
-}  // namespace lighthouse
+}  // namespace lh
 
 #ifndef SWIG
 namespace google {
 namespace protobuf {
 
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::lighthouse::Command_Commands>() {
-  return ::lighthouse::Command_Commands_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::lh::Command_Commands>() {
+  return ::lh::Command_Commands_descriptor();
 }
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::lighthouse::Error_Errors>() {
-  return ::lighthouse::Error_Errors_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::lh::Error_Errors>() {
+  return ::lh::Error_Errors_descriptor();
 }
 
 }  // namespace google
