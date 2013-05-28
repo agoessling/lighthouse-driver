@@ -16,8 +16,8 @@ lh::Driver::Driver(const std::string &target_host, uint32_t target_port){
 }
 
 lh::Driver::~Driver(void){
-    delete context;
     delete socket;
+    delete context;
 }
 
 lh::Reply lh::Driver::init(void){
@@ -36,6 +36,7 @@ lh::Reply lh::Driver::init(void){
 
     return reply;
 }
+
 
 lh::Reply lh::Driver::connect(void){
     lh::Reply reply;
@@ -70,7 +71,7 @@ lh::Reply lh::Driver::connect(void){
     // TODO: Make this more descriptive
     if(resp.has_error()){
         reply.error = true;
-        reply.str = "Could not connect.";
+        reply.str = "Could not connect -- "+resp.error().string();
         return reply;
     }
 
@@ -79,6 +80,7 @@ lh::Reply lh::Driver::connect(void){
     reply.str = resp.connect_resp().port();
     return reply;
 }
+
 
 lh::Reply lh::Driver::get_num_brds(void){
     lh::Reply reply;
@@ -113,7 +115,7 @@ lh::Reply lh::Driver::get_num_brds(void){
     // TODO: Make this more descriptive
     if(resp.has_error()){
         reply.error = true;
-        reply.str = "Could not get number of boards.";
+        reply.str = "Could not get number of boards -- "+resp.error().string();
         return reply;
     }
 
@@ -122,6 +124,7 @@ lh::Reply lh::Driver::get_num_brds(void){
     reply.value = resp.num_brds_resp().num_brds();
     return reply;
 }
+
 
 lh::Reply lh::Driver::set_dc(uint32_t level, uint32_t num_brds){
     lh::Reply reply;
@@ -162,7 +165,7 @@ lh::Reply lh::Driver::set_dc(uint32_t level, uint32_t num_brds){
     // TODO: Make this more descriptive
     if(resp.has_error()){
         reply.error = true;
-        reply.str = "Could not set DC level.";
+        reply.str = "Could not set DC level -- " + resp.error().string();
         return reply;
     }
 
@@ -170,6 +173,7 @@ lh::Reply lh::Driver::set_dc(uint32_t level, uint32_t num_brds){
     reply.error = false;
     return reply;
 }
+
 
 lh::Reply lh::Driver::send_data(const uint32_t *data){
     // data MUST be 48 ints in length
@@ -186,10 +190,15 @@ lh::Reply lh::Driver::send_data(const uint32_t *data){
     cmd.set_cmd_type(lh::Command::SEND_DATA); 
 
     // Set Data
-    cmd.mutable_send_data()->mutable_data()->Reserve(48);
-    memcpy(cmd.mutable_send_data()->mutable_data()->mutable_data(),
-           data,
-           sizeof(uint32_t)*48);
+    for(int i=0; i<48; i++){
+        cmd.mutable_send_data()->add_data(*(data+i));
+    }
+
+    // DOESN'T CORRECTLY SET SIZE -- DUMB WAY FOR NOW...
+    //cmd.mutable_send_data()->mutable_data()->Reserve(48);
+    //memcpy(cmd.mutable_send_data()->mutable_data()->mutable_data(),
+    //       data,
+    //       sizeof(uint32_t)*48);
 
     // Serialize Command
     std::string msg;
@@ -212,7 +221,7 @@ lh::Reply lh::Driver::send_data(const uint32_t *data){
     // TODO: Make this more descriptive
     if(resp.has_error()){
         reply.error = true;
-        reply.str = "Could not send data.";
+        reply.str = "Could not send data -- " + resp.error().string();
         return reply;
     }
 
@@ -220,6 +229,139 @@ lh::Reply lh::Driver::send_data(const uint32_t *data){
     reply.error = false;
     return reply;
 }
+
+
+lh::Reply lh::Driver::lat_data(void){
+
+    lh::Reply reply;
+
+    // Ensure Initialization
+    reply = is_initted();
+    if(reply.error)
+        return reply;
+
+    // Create LAT_DATA Command
+    lh::Command cmd;
+    cmd.set_cmd_type(lh::Command::LAT_DATA); 
+
+    // Serialize Command
+    std::string msg;
+    cmd.SerializeToString(&msg);
+
+    // Send Command
+    zmq::message_t request((void *)msg.data(), msg.length(), NULL);
+    socket->send(request);
+
+    // Get Reply
+    zmq::message_t zmq_reply;
+    socket->recv(&zmq_reply);
+    std::string zmq_data = (const char *)zmq_reply.data();
+
+    // Parse Response
+    lh::Response resp;
+    resp.ParseFromString(zmq_data);
+
+    // Error
+    // TODO: Make this more descriptive
+    if(resp.has_error()){
+        reply.error = true;
+        reply.str = "Could not latch data -- " + resp.error().string();
+        return reply;
+    }
+
+    // Success
+    reply.error = false;
+    return reply;
+}
+
+
+lh::Reply lh::Driver::en_led(void){
+
+    lh::Reply reply;
+
+    // Ensure Initialization
+    reply = is_initted();
+    if(reply.error)
+        return reply;
+
+    // Create EN_LED Command
+    lh::Command cmd;
+    cmd.set_cmd_type(lh::Command::EN_LED); 
+
+    // Serialize Command
+    std::string msg;
+    cmd.SerializeToString(&msg);
+
+    // Send Command
+    zmq::message_t request((void *)msg.data(), msg.length(), NULL);
+    socket->send(request);
+
+    // Get Reply
+    zmq::message_t zmq_reply;
+    socket->recv(&zmq_reply);
+    std::string zmq_data = (const char *)zmq_reply.data();
+
+    // Parse Response
+    lh::Response resp;
+    resp.ParseFromString(zmq_data);
+
+    // Error
+    // TODO: Make this more descriptive
+    if(resp.has_error()){
+        reply.error = true;
+        reply.str = "Could not enable LEDs -- " + resp.error().string();
+        return reply;
+    }
+
+    // Success
+    reply.error = false;
+    return reply;
+}
+
+
+lh::Reply lh::Driver::dis_led(void){
+
+    lh::Reply reply;
+
+    // Ensure Initialization
+    reply = is_initted();
+    if(reply.error)
+        return reply;
+
+    // Create DIS_LED Command
+    lh::Command cmd;
+    cmd.set_cmd_type(lh::Command::DIS_LED); 
+
+    // Serialize Command
+    std::string msg;
+    cmd.SerializeToString(&msg);
+
+    // Send Command
+    zmq::message_t request((void *)msg.data(), msg.length(), NULL);
+    socket->send(request);
+
+    // Get Reply
+    zmq::message_t zmq_reply;
+    socket->recv(&zmq_reply);
+    std::string zmq_data = (const char *)zmq_reply.data();
+
+    // Parse Response
+    lh::Response resp;
+    resp.ParseFromString(zmq_data);
+
+    // Error
+    // TODO: Make this more descriptive
+    if(resp.has_error()){
+        reply.error = true;
+        reply.str = "Could not disable LEDs -- " + resp.error().string();
+        return reply;
+    }
+
+    // Success
+    reply.error = false;
+    return reply;
+}
+
 
 lh::Reply lh::Driver::is_initted(void){
     lh::Reply reply;
